@@ -1,0 +1,15 @@
+{
+  "name": "appli-bce",
+  "version": "1.0.0",
+  "description": "Application BCE - Integration connection API - UI/UX - DATAVIZ (D3.js)",
+  "main": "index.js",
+  "scripts": {
+  "build-css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}
