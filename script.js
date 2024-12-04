@@ -1,5 +1,5 @@
 // URL de l'API pour les taux de change EUR/USD
-const apiUrl = "https://sdw-wsrest.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A";
+const apiUrl = "https://data-api.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A";
 
 // Fonction pour récupérer les données
 async function fetchExchangeRate() {
@@ -17,11 +17,11 @@ async function fetchExchangeRate() {
 
         const data = await response.json(); 
         console.log("Données récupérées :", data);
+        displayData(data);
     } catch (error) {
         console.error("Erreur lors de la connexion à l'API BCE :", error);
     }
 }
-
 
 fetchExchangeRate();
 
