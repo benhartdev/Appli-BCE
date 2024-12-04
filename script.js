@@ -1,29 +1,30 @@
 // URL de l'API pour les taux de change EUR/USD
-const apiUrl = "https://sdw-wsrest.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A";
+// const apiUrl = "https://v6.exchangerate-api.com/v6/2da17f58272f199413255b3b/";
 
 // Fonction pour récupérer les données
-async function fetchExchangeRate() {
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json' // Spécifie le format de réponse (JSON recommandé)
-            }
-        });
+const apiKey = '2da17f58272f199413255b3b'; // Remplacez par votre clé API
+const baseCurrency = 'EUR'; // Devise de base
+const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
 
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP! Statut: ${response.status}`);
-        }
-
-        const data = await response.json(); 
-        console.log("Données récupérées :", data);
-    } catch (error) {
-        console.error("Erreur lors de la connexion à l'API BCE :", error);
+async function fetchExchangeRates() {
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+    const data = await response.json();
+    console.log("Taux de change :", data.conversion_rates);
+  } catch (error) {
+    console.error("Erreur lors de la connexion à l'API :", error);
+  }
 }
 
+fetchExchangeRates();
 
-fetchExchangeRate();
+
+
+
+
 
 function displayData(data) {
     const container = document.getElementById("data-container");
